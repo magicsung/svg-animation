@@ -1,0 +1,43 @@
+html, body {
+  position: relative;
+  background-color: #000;
+  color: #fff;
+}
+@keyframes offset {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes fill-it {
+  100% {
+    fill: #fff;
+  }
+}
+#svg-show {
+  width: 400px;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  top: 200px;
+
+  fill: #000;
+  stroke: #fff;
+  stroke-dasharray: 650;
+  stroke-dashoffset: 650;
+
+  animation: offset 3s linear forwards, fill-it 1s 3s forwards;
+}
+.percent {
+  display: block;
+  position: fixed;
+  left: 50%;
+  top: 55%;
+  transform: translate( -50%, -50% );
+  color: #ccc;
+}
+.video {
+  max-width: 100%;
+}
+.content {
+  display: none;
+}

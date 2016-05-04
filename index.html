@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>svg animation</title>
+    <link rel="stylesheet" href="./css/normalize.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="./css/main.css" media="screen" title="no title" charset="utf-8">
+    <script type="text/javascript" src="./js/jquery-2.2.1.min.js"></script>
+  </head>
+  <body id="body">
+
+    <div class="content">
+      <h1>content</h1>
+    </div>
+
+    <div class="loading">
+      <svg id="svg-show" data-name="layer1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 434.11 214.21">
+        <title>brand</title>
+        <path d="M272.75,333.91q-10.55,17.31-25.4,26.09t-27.26,8.78q-17.38,0-31.23-15T175,308.2q0-24.08,9.2-43t24.61-29.92q15.41-11,38.15-11,6.59,0,19.84,1.37,2,0.25,5.95.62h23.16v97.92q0,25.09,5.34,40.74H277.19Q274.4,353.56,272.75,333.91Zm0.09-27.62V246.75A90.53,90.53,0,0,0,250,243.52q-21.39,0-35.63,16.53T200.1,305q0,20.63,7.77,31.13t17.72,10.5q10.82,0,23.88-10.94T272.84,306.29Z" transform="translate(-175.02 -164.57)"/>
+        <path d="M355.52,257.44q10.68-17.39,25.45-26.2t27.19-8.82q17.38,0,31.28,15T453.34,283q0,24.09-9.25,43t-24.64,29.92q-15.39,11-38.11,11-6.46,0-19.86-1.37-2-.25-6-0.62H332.43V164.57h23.09v92.87Zm0,27.47v59.53a93,93,0,0,0,23.09,3.23q21,0,35.32-16.47t14.34-45.06q0-20.76-7.82-31.19t-17.75-10.44q-10.8,0-23.77,10.94T355.52,284.91Z" transform="translate(-175.02 -164.57)"/>
+        <path d="M543.77,368.78q-29.76,0-47.62-20.79t-17.86-52.45q0-31.65,17.86-52.39t47.62-20.73q29.64,0,47.5,20.73t17.86,52.39q0,31.65-17.86,52.45T543.77,368.78Zm0-19.24q18.47,0,29.38-14.4t10.91-39.6q0-25.07-10.91-39.48t-29.37-14.4q-18.59,0-29.5,14.4t-10.91,39.48q0,25.2,10.91,39.6T543.77,349.54Z" transform="translate(-175.02 -164.57)"/>
+      </svg>
+
+      <h1 class="percent"><span id="percent-text">0</span>%</h1>
+    </div>
+
+    <script type="text/javascript">
+
+      $.fn.jQuerySimpleCounter = function( options ) {
+	    var settings = $.extend({
+	        start:  0,
+	        end:    100,
+	        easing: 'swing',
+	        duration: 400,
+	        complete: ''
+	    }, options );
+	    var thisElement = $(this);
+    	    $({count: settings.start}).animate({count: settings.end}, {
+    			duration: settings.duration,
+    			easing: settings.easing,
+    			step: function() {
+    				var mathCount = Math.ceil(this.count);
+    				thisElement.text(mathCount);
+    			},
+    			complete: settings.complete
+    		});
+    	};
+
+      $('#percent-text').jQuerySimpleCounter({end: 100,duration: 4000});
+
+      $(document).ready(function(){
+        $('.loading').show(300).delay(3800).fadeOut(300, function() {
+          $('.content').show();
+        });
+      });
+
+    </script>
+
+  </body>
+</html>
